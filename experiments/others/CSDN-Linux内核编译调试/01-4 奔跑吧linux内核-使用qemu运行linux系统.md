@@ -95,20 +95,11 @@ qemu虚拟机的版本是 并检查是否如下
     benshushu login: root
     123
     Password: 
-    
-    
-    
-    
-    
     Login incorrect
     benshushu login: root
     Password: 
     [  235.882897] kdump-tools[298]: kdump-tools: Generating /var/lib/kdump/initrd.img-5.0.0
     Last login: Tue Feb 18 02:06:31 UTC 2020 on ttyAMA0
-    
-    
-    
-    
     Linux benshushu 5.0.0 #1 SMP Fri Mar 26 13:01:59 CST 2021 aarch64
     
     Welcome Running Linux Kernel.
@@ -119,7 +110,6 @@ qemu虚拟机的版本是 并检查是否如下
     
     Wechat: runninglinuxkernel
     
-    
     benshushu:~# 
     benshushu:~# 
     benshushu:~# 
@@ -127,8 +117,9 @@ qemu虚拟机的版本是 并检查是否如下
     benshushu:~# 
     benshushu:~# 
     benshushu:~# [  292.736680] kdump-tools[298]: find: ‘/var/tmp/mkinitramfs_BaZNBB/lib/modules/5.0.0/kernel’: No such file or directory
-    
-    
+
+
+ 
 
 系统帐户密码  
 root  
@@ -219,7 +210,6 @@ qemu虚拟机通过virtIO-net技术生成虚拟的网卡，并通过网络桥接
 要在run起来 的内核中编译测试代码，将代码放在
 
     runninglinuxkernel_5.0/kmodules
-
 
 下面便是  
 helloworld.c

@@ -20,3 +20,11 @@
 
 参考 \experiments\others\Linux内核编译调试\experiments\others\01-4 使用qemu运行linux系统.md
 
+
+
+### 实验1-4 创建基于Ubuntu Linux的根文件系统
+
+参考
+
+\experiments\others\CSDN-Linux系统实验\01-11 Ubuntu 20.04使用qemu搭建ARM64 Linux系统.md
+
