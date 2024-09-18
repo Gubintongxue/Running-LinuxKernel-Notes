@@ -351,7 +351,13 @@ esac
 
 ![image-20240918094120206](image/image-20240918094120206.png)
 
+#### 第三次实验使用run_rlk_arm64.sh编译
 
+```
+./run_rlk_arm64.sh build_kernel
+```
+
+![image-20240919002616726](image/image-20240919002616726.png)
 
 
 
@@ -385,7 +391,23 @@ esac
 
 生成rootfs\_debian\_arm64.ext4的根文件系统。
 
+![image-20240919000510310](image/image-20240919000510310.png)
+
 编译根文件需要管理员权限，而编译内核则不需要。
+
+
+
+#### 第三次生成根文件
+
+发现书上和CSDN上还是有区别的，应该是
+
+```
+sudo ./run_rlk_arm64.sh  build_rootfs
+```
+
+但是好像没生成别的，可能需要将之前的清除
+
+![image-20240919002832709](image/image-20240919002832709.png)
 
 ### 4.运行刚编译好的arm64版本的linux系统
 
@@ -394,6 +416,14 @@ esac
 ```
 sudo ./run_debian_arm64.sh  run
 ```
+
+第三次实验，发现书上和CSDN上还是有区别的，书上应该是
+
+```
+sudo ./run_rlk_arm64.sh  run
+```
+
+
 
 或
 
@@ -408,6 +438,25 @@ qemu-system-aarch64 -m 1024 -cpu max,sve=on,sve256=on -M virt,gic-version=3,its=
 用户名：root
 
 密码：123
+
+#### 旧电脑上运行报错
+
+![image-20240919003050912](image/image-20240919003050912.png)
+
+benshushu login: [   48.906123] kdump-tools[287]: loaded kdump kernel.
+
+![image-20240919003033772](image/image-20240919003033772.png)
+
+`kdump` 是 Linux 内核崩溃转储（Kernel Crash Dump）的工具。它在内核崩溃时，会启动一个简化的二次内核来捕获和保存系统崩溃时的内存状态，用于后续分析。
+
+- **`kdump-tools`** 是管理和配置 `kdump` 的工具，帮助您在内核崩溃时保存内存的快照。
+- **`loaded kdump kernel`** 表示 `kdump` 成功加载了用于崩溃分析的内核，表明 kdump 已准备好处理潜在的内核崩溃。
+
+==在系统崩溃前，登录进去，可以忽略错误，速度要快==
+
+![image-20240919004237197](image/image-20240919004237197.png)
+
+
 
 #### 如果遇到此磁盘已经被其他进程占用
 
