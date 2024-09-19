@@ -1,6 +1,10 @@
 ### 实验1-2 给优麒麟Linux系统更换心脏
 
+01-2-1 给优麒麟Linux系统更换心脏_原书版 参考原书
 
+01-2-2 Ubuntu更换Linux内核整理版_拓展 在01-2-1的基础上整理，并且参考了\experiments\others\CSDN-Linux系统实验\01-2 优麒麟 20.04 pro更换内核
+
+01-2-3 给Ubuntu Linux系统更换心脏_实验手册版 着重介绍了make menuconfig的配置
 
 ### 实验1-3 使用QEMU虚拟机来运行Linux系统 
 
@@ -18,7 +22,9 @@
 
 原书方法
 
-参考 \experiments\others\Linux内核编译调试\experiments\others\01-4 使用qemu运行linux系统.md
+01-3-2 使用QEMU虚拟机来运行Linux系统_实验手册版
+
+参考 \experiments\others\Linux内核编译调试\experiments\others\01-4 奔跑吧linux 使用qemu运行linux系统.md
 
 
 
