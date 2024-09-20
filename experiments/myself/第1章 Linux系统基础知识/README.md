@@ -24,6 +24,8 @@
 
 01-3-2 使用QEMU虚拟机来运行Linux系统_实验手册版
 
+参考实验手册
+
 参考 \experiments\others\Linux内核编译调试\experiments\others\01-4 奔跑吧linux 使用qemu运行linux系统.md
 
 
