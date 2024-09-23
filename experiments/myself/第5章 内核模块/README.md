@@ -10,3 +10,14 @@
 
 \experiments\others\CSDN-Linux内核编译调试\01-9 内核状态下参数传递-module_param.md
 
+
+
+### 实验5-3
+
+参考
+
+
+
+### 实验504
+
+参考实验手册
