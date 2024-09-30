@@ -1,28 +1,20 @@
-实验 12-9：使用 kernelshark 来分析数据
+# 实验 12-9：使用 kernelshark 来分析数据
 
-1．实验目的
+## 1．实验目的
 
-学会使用 trace-cm 和 kernelshark 工具来抓取和分析 ftrace 数据。
+​		学会使用 trace-cm 和 kernelshark 工具来抓取和分析 ftrace 数据。
 
-2．实验详解
+## 2．实验详解
 
-前面介绍了 ftrace 的常用方法。有些人希望有一些图形化的工具，trace-cmd 和
+​		前面介绍了 ftrace 的常用方法。有些人希望有一些图形化的工具，trace-cmd 和kernelshark 工具就是为此而生。
 
-kernelshark 工具就是为此而生。
-
-在 Ubuntu 上安装 trace-cmd 和 kernelshark 工具。
+​		在 Ubuntu 上安装 trace-cmd 和 kernelshark 工具。
 
 ```
 #sudo apt-get install trace-cmd kernelshark
 ```
 
-trace-cmd 的使用方式遵循 reset->record->stop->report 模式，要用 record 命令收集
-
-数据，按“Ctrl+c”组合键可以停止收集动作，在当前目录下生产 trace.dat 文件。使
-
-用 trace-cmd report 解析 trace.dat 文件，这是文字形式的，kernelshark 是图形化的，更
-
-方便开发者观察和分析 数据。
+​		trace-cmd 的使用方式遵循 reset->record->stop->report 模式，要用 record 命令收集数据，按“Ctrl+c”组合键可以停止收集动作，在当前目录下生产 trace.dat 文件。使用 trace-cmd report 解析 trace.dat 文件，这是文字形式的，kernelshark 是图形化的，更方便开发者观察和分析 数据。
 
 ```
 figo@figo-OptiPlex-9020:~/work/test1$ trace-cmd record -h
@@ -50,35 +42,39 @@ trace-cmd record [-v][-e event [-f filter]][-p plugin][-F][-d][-o file] \
 -b change kernel buffersize (in kilobytes per CPU)
 ```
 
-常用的参数如下。
+​		常用的参数如下。
 
- -p plugin：指定一个跟踪器，可以通过 trace-cmd list 来获取系统支持的跟踪
+-  -p plugin：指定一个跟踪器，可以通过 trace-cmd list 来获取系统支持的跟踪
+
 
 器。常见的跟踪器有 function_graph、function、nop 等。
 
- –e event：指定一个跟踪事件。
+-  –e event：指定一个跟踪事件。
 
- –f filter：指定一个过滤器，这个参数必须紧跟着“-e”参数。
 
- –P pid：指定一个进程进行跟踪。
+-  –f filter：指定一个过滤器，这个参数必须紧跟着“-e”参数。
 
- –l func：指定跟踪的函数，可以是一个或多个。
 
- –n func：不跟踪某个函数。
+-  –P pid：指定一个进程进行跟踪。
 
-以跟踪系统进程切换的情况为例。
 
-\#trace-cmd record -e 'sched_wakeup*' -e sched_switch -e 'sched_migrate*'
+-  –l func：指定跟踪的函数，可以是一个或多个。
 
-\#kernelshark trace.dat
 
-通过 kernelshark 可以图形化地查看需要的信息，直观、方便，如图 11.2 所示。
+-  –n func：不跟踪某个函数。
 
-打开菜单中的“Plots”→“CPUs”选项，可以选择要观察的 CPU。选择“Plots”
 
-→“Tasks”，可以选择要观察的进程。如图 11.3 所示，选择要观察的进程是 PID 为
+​		以跟踪系统进程切换的情况为例。
 
-“8228”的进程，该进程名称为“trace-cmd”。
+```
+#trace-cmd record -e 'sched_wakeup*' -e sched_switch -e 'sched_migrate*'
+
+#kernelshark trace.dat
+```
+
+​		通过 kernelshark 可以图形化地查看需要的信息，直观、方便，如图 11.2 所示。
+
+​		打开菜单中的“Plots”→“CPUs”选项，可以选择要观察的 CPU。选择“Plots”→“Tasks”，可以选择要观察的进程。如图 11.3 所示，选择要观察的进程是 PID 为“8228”的进程，该进程名称为“trace-cmd”。
 
 ![image-20240927144927088](image/image-20240927144927088.png)
 
