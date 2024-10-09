@@ -297,7 +297,7 @@ sudo chmod -R g+w runninglinuxkernel_5.0/
 
 -  C/C++ Appliction：选择编译 Linux 内核带符号表信息的 vmlinux。
 
--  Build<if required>before launching：选中 Disable auto build，如图 4.9所示。
+-  Build<if required>before launching：选中 Disable auto build，如图 4.9所示。==(下面错误，看后面操作)==
 
 ![image-20240919005805323](image/image-20240919005805323.png)
 
@@ -349,7 +349,7 @@ $ ./run_rlk_arm64.sh run debug
 
 为了防止错误，重新在新环境编译内核一次
 
-```
+```shell
 make clean 
 rm -f rootfs_debian_arm64.ext4
 ./run_debian_arm64.sh build_kernel

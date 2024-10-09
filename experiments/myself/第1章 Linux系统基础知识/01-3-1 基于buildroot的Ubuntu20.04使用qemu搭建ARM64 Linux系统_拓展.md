@@ -12,7 +12,7 @@
 
 ### 1.安装所需依赖
 
-```
+```shell
 sudo apt update
 sudo apt install flex bison libssl-dev build-essential libncurses5-dev qemu-system-arm gcc-aarch64-linux-gnu vim 
 ```
@@ -31,7 +31,7 @@ sudo apt install flex bison libssl-dev build-essential libncurses5-dev qemu-syst
 
 进入目录解压到/root/qemudebug
 
-```
+```shell
 tar -xzvf buildroot-2024.02.6.tar.gz -C /root/qemudebug
 ```
 
@@ -45,7 +45,7 @@ tar -xzvf buildroot-2024.02.6.tar.gz -C /root/qemudebug
 
 我这里选择下载的是linux-5.15.10,之前我做实验用过的
 
-```
+```shell
 tar -xvf linux-5.15.10.tar -C /root/qemudebug
 ```
 
@@ -53,7 +53,7 @@ tar -xvf linux-5.15.10.tar -C /root/qemudebug
 
 补充：解压自定义名称
 
-```
+```shell
 sudo tar -xzvf buildroot-2024.02.6.tar.gz --strip-components=1 -C /root/qemudebug/buildroot_custom_name
 ```
 
@@ -67,7 +67,7 @@ sudo tar -xzvf buildroot-2024.02.6.tar.gz --strip-components=1 -C /root/qemudebu
 
 ## 2.编译根文件
 
-```
+```shell
 cd buildroot-2021.02.4
 make menuconfig
 ```
@@ -140,12 +140,14 @@ make menuconfig
 
 回到`qemudebug`目录下，执行：
 
-    cd linux-5.15.10
-    ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make defconfig
+```shell
+cd linux-5.15.10
+ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make defconfig
+```
 
 ![image-20240913175801122](image/image-20240913175801122.png)
 
-```
+```shell
 vim .config
 ```
 
@@ -157,7 +159,7 @@ vim .config
 
 -    CONFIG\_INITRAMFS\_SOURCE=“XXX/new/buildroot-2021.02.4/output/images/rootfs.cpio”(注意这里XXX要设置为你自己的路径)
 
-```
+```shell
 CONFIG\_INITRAMFS\_SOURCE="~/qemudebug/buildroot-2024.02.6/output/images/rootfs.cpio"
 ```
 
@@ -169,7 +171,9 @@ CONFIG\_INITRAMFS\_SOURCE="~/qemudebug/buildroot-2024.02.6/output/images/rootfs.
 
 配置结束后，执行以下命令
 
-    ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make -j4
+```shell
+ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make -j4
+```
 
 按了一些回车，默认
 

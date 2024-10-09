@@ -10,7 +10,7 @@
 
 ​		首先，确保在 Linux 主机上安装了 aarch64-linux-gnu-gcc 和 QEMU 工具包。
 
-```
+```shell
 $sudo apt-get install qemu qemu-system-arm gcc-aarch64-linux-gnu build-essential bison flex bc
 ```
 
@@ -24,13 +24,13 @@ $sudo apt-get install gdb-multiarch
 
 ​		接下来，运行 run_rlk_arm64.sh 脚本以启动 QEMU 虚拟机和 GDB 服务。
 
-```
+```shell
 ./run_rlk_arm64.sh run debug
 ```
 
 ​		上述脚本会运行如下命令，不过建议读者直接使用 run_rlk_arm64.sh 脚本。
 
-```
+```shell
 $ qemu-system-aarch64 -m 1024 -cpu max,sve=on,sve256=on -M virt,gic-version=3,its=on,iommu=smmuv3 -nographic -kernel arch/arm64/boot/Image -append "noinitrd nokaslr loglevel=8 sched_debug root=/dev/vda rootfstype=ext4 rw crashkernel=256M vfio.dyndbg=+pflmt irq_gic_v3_its.dyndbg=+pflmt iommu.dyndbg=+pflmt irqdomain.dyndbg=+pflmt" -drive if=none,file=/root/runninglinuxkernel_5.0/rootfs_debian_arm64.ext4,id=hd0 -device virtio-blk-device,drive=hd0 --fsdev local,id=kmod_dev,path=./kmodules,security_model=none -device virtio-9p-pci,fsdev=kmod_dev,mount_tag=kmod_mount -s -S
 ```
 
@@ -61,7 +61,7 @@ $ qemu-system-aarch64 -m 1024 -cpu max,sve=on,sve256=on -M virt,gic-version=3,it
 
    ![image-20240919140822907](image/image-20240919140822907.png)
 
-   - ```
+   - ```shell
      -append "noinitrd nokaslr loglevel=8 sched_debug root=/dev/vda rootfstype=ext4 rw crashkernel=256M vfio.dyndbg=+pflmt irq_gic_v3_its.dyndbg=+pflmt iommu.dyndbg=+pflmt irqdomain.dyndbg=+pflmt"
      ```
 
@@ -112,7 +112,7 @@ $ qemu-system-aarch64 -m 1024 -cpu max,sve=on,sve256=on -M virt,gic-version=3,it
 
 接下来，在另外一个超级终端中启动 GDB。
 
-```
+```shell
 $ cd runninglinuxkernel_5.0
 $ gdb-multiarch --tui vmlinux
 (gdb) set architecture aarch64 <= 设置Aarch64架构
@@ -127,7 +127,7 @@ $ gdb-multiarch --tui vmlinux
 
 实操：
 
-```
+```shell
 cd runninglinuxkernel_5.0
 gdb-multiarch --tui vmlinux
 ```
